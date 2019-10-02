@@ -1,0 +1,86 @@
+# OSX
+#
+.DS_Store
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+ios/Pods/
+# ios/Podfile.lock
+ios/*/Supporting/EXBuildConstants.*
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+android/.project
+android/.settings/
+android/app/src/main/java/host/exp/exponent/generated/DetachBuildConstants.java
+android/app/.project
+android/app/.classpath
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+# Bundle artifact
+*.jsbundle
+
+#yarn
+yarn.lock
+
+# Expo
+.expo
+__generated__
+
+# Expo Client builds
+/client-builds
+
+# IcoMoon
+src/assets/icomoon/demo-files
+src/assets/icomoon/demo.html
+src/assets/icomoon/style.css
+
+# Ignore test-related files
+/coverage.data
+/coverage/*
+
+# env files
+.env

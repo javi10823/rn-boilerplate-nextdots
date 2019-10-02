@@ -1,0 +1,7 @@
+src/assets
+node_modules
+.expo
+.gitlab
+sr/coverage/
+flow-typed
+Example/node_modules

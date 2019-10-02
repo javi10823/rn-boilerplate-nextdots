@@ -1,0 +1,26 @@
+{
+  "link": "https://www.typescriptlang.org/docs/handbook/compiler-options.html",
+  "include": ["src", "types"],
+  "compilerOptions": {
+    "lib": ["dom", "es7"],
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "noImplicitAny": false
+  },
+  "plugins": [
+    {
+      "name": "typescript-styled-plugin"
+    }
+  ]
+}
