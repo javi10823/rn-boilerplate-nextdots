@@ -1,38 +1,32 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 
-import State from '../../../reducers';
-import { fetchExample } from '../../../actions/example';
 import { Typography, BackButton, EmptyContent } from '../../../components';
 import { Container, JSONContainer } from './styles';
 import { goBack } from '../../../navigation';
+import withArtworksQuery, { ChildProps } from '../../../apollo/queries/artworks';
 
-interface Props {
-  fetchExample: Function;
-  exampleData: any;
-  fetchExampleError: string;
-  fetchExampleIsLoading: boolean;
-}
+// interface Props extends ChildProps {}
 
-class FetchExample extends React.Component<Props, State> {
+class FetchExample extends React.Component<ChildProps> {
   async componentDidMount() {
-    const { fetchExample } = this.props;
-    await fetchExample();
+    const { data } = this.props;
+    await data.refetch();
   }
 
   render() {
-    const { exampleData, fetchExampleError, fetchExampleIsLoading } = this.props;
+    const { data } = this.props;
+    const { loading, artworks, error } = data;
 
     return (
       <Container>
         <BackButton onPress={() => goBack()} text="FetchExample" />
-        {fetchExampleIsLoading || fetchExampleError ? (
-          <EmptyContent text={fetchExampleError} />
+        {loading || error ? (
+          <EmptyContent text={JSON.stringify(error)} />
         ) : (
           <JSONContainer>
             <ScrollView>
-              <Typography>{JSON.stringify(exampleData, null, 2)}</Typography>
+              <Typography>{JSON.stringify(artworks, null, 2)}</Typography>
             </ScrollView>
           </JSONContainer>
         )}
@@ -41,17 +35,4 @@ class FetchExample extends React.Component<Props, State> {
   }
 }
 
-const mapStateToProps = (state: State) => ({
-  exampleData: state.example.exampleData,
-  fetchExampleError: state.example.fetchExampleError,
-  fetchExampleIsLoading: state.example.fetchExampleIsLoading,
-});
-
-const mapDispatchToProps = (dispatch: Function) => ({
-  fetchExample: () => dispatch(fetchExample()),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(FetchExample);
+export default withArtworksQuery(FetchExample);
