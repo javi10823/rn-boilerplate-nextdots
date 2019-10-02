@@ -1,51 +1,64 @@
-# :space_invader: React Native Template TypeScript
+# NextDots core mobile React Native Typescript RN 0.60.4
 
-<p>
-  <a href="https://travis-ci.org/react-native-community/react-native-template-typescript">
-    <img alt="Build Status" src="https://img.shields.io/travis/react-native-community/react-native-template-typescript.svg" target="_blank" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript#readme">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript/graphs/commit-activity">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript/blob/master/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
-  </a>
-</p>
+NextDots core mobile React Native with Typescript template React Native 0.60.4
 
-> Clean and minimalist React Native template for a quick start with TypeScript.
+## Create a new project from the core app
 
-## :star: Features
+This is a core app for new project, so the first step is `renaming` the project.
 
-- Elegant usage directly within the [React Native CLI](https://github.com/react-native-community/cli)
-- Consistent with the default React Native template
-- Minimal additional dependencies
+### Renaming project: Install React Native Rename Globaly
 
-## :arrow_forward: Usage
-
-> `react-native@0.61.0` or higher
-
-```sh
-npx react-native init MyApp --template react-native-template-typescript
+```
+$ yarn global add react-native-rename
 ```
 
-> `react-native@0.60.x`
+### Rename the project
 
-```sh
-npx react-native init MyApp --template react-native-template-typescript@6.2.0
+```
+$ react-native-rename <newName>
 ```
 
-### Note on the legacy CLI
-There seems to be quite some confusion about the legacy CLI. This template only works with the new CLI. Make sure you have uninstalled the legacy `react-native-cli` first (`npm uninstall -g react-native-cli`), for the above command to work. If you wish to not use `npx`, you can also install the new CLI globally (`npm i -g @react-native-community/cli` or `yarn global add @react-native-community/cli`).
+## Getting started
 
-Further information can be found here: https://github.com/react-native-community/cli#about
+```
+$ yarn install
 
-## :computer: Contributing
+$ cd ios && pod install
+```
 
-Contributions are very welcome. Please check out the [contributing document](CONTRIBUTING.md).
+## VSCode extensions
 
-## :bookmark: License
+- Prettier
+- TSLint
 
-This project is [MIT](LICENSE) licensed.
+## Create the .env file
+
+The content of each key was added in 1Passord for security purposes
+
+There is a `.env.example` file in the root of the project, you have to rename to `.env` and add the proper values for each key.
+
+## launch iOS
+
+`$ react-native run-ios` or from XCode opening the workspace file
+
+## launch Android
+
+`$ react-native run-android` or from Ansdroid Studio
+
+## Utils
+
+- Execute `yarn run ts` for typescript live reload check (Compile ts project)
+- Use [react-native-elements](https://react-native-training.github.io/react-native-elements/docs/overview.html)
+
+## Libreries used
+
+- React Native version: 0.60.4.
+- TypeScript
+- Redux / Redux forms with Yup
+- Apollo for GraphQL
+- Styled Components
+- React Native Dot Env (.env file)
+- React Navigation v4
+- React Native Sentry
+
+:v: **Enjoy!**
