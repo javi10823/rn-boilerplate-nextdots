@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -17,6 +17,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import {
   Header,
@@ -27,6 +28,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
   return (
     <>
