@@ -1,4 +1,4 @@
-# NextDots core mobile React Native Typescript RN 0.60.4
+# NextDots core mobile React Native Typescript RN 0.61.1
 
 NextDots core mobile React Native with Typescript template React Native 0.60.4
 
