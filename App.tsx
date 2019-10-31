@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, PureComponent } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -18,6 +18,8 @@ import {
   StatusBar,
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import * as Sentry from '@sentry/react-native';
+import VersionNumber from 'react-native-version-number';
 
 import {
   Header,
@@ -27,57 +29,87 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
-  const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {!usingHermes ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+import config, { isProduction } from './config';
+
+class App extends PureComponent {
+  componentDidMount() {
+    this.initSentry();
+  }
+
+  initSentry = () => {
+    let sentryEnvironment = '';
+    if (!isProduction && !__DEV__) {
+      sentryEnvironment = 'staging';
+    }
+    if (isProduction && !__DEV__) {
+      sentryEnvironment = 'production';
+    }
+    if (__DEV__) {
+      sentryEnvironment = 'development';
+    }
+    if (!__DEV__) {
+      Sentry.init({
+        dsn: config.SENTRY_DSN,
+      });
+    }
+    Sentry.setTag('environment', `${sentryEnvironment}`);
+    Sentry.setTag('react', 'true');
+    Sentry.setExtra('version', `${VersionNumber.appVersion}`);
+    Sentry.setExtra('environmentAPI', isProduction ? 'production' : 'staging');
+  };
+
+  render() {
+    useEffect(() => {
+      SplashScreen.hide();
+    }, []);
+    const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
+    return (
+      <>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}>
+            <Header />
+            {!usingHermes ? null : (
+              <View style={styles.engine}>
+                <Text style={styles.footer}>Engine: Hermes</Text>
+              </View>
+            )}
+            <View style={styles.body}>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Step One</Text>
+                <Text style={styles.sectionDescription}>
+                  Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+                  screen and then come back to see your edits.
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>See Your Changes</Text>
+                <Text style={styles.sectionDescription}>
+                  <ReloadInstructions />
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Debug</Text>
+                <Text style={styles.sectionDescription}>
+                  <DebugInstructions />
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Learn More</Text>
+                <Text style={styles.sectionDescription}>
+                  Read the docs to discover what to do next:
+                </Text>
+              </View>
+              <LearnMoreLinks />
             </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+          </ScrollView>
+        </SafeAreaView>
+      </>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   scrollView: {
