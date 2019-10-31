@@ -11,7 +11,7 @@ import {
   API_CONNECTOR_LOGS_ACTIVATED,
 } from 'react-native-dotenv';
 
-const isProduction = true;
+export const isProduction = false;
 
 console.table(
   [
