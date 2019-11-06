@@ -12,6 +12,7 @@ const AppStack = createAnimatedSwitchNavigator(
   { initialRouteName: 'Auth' },
 );
 
+// @ts-ignore
 export default createAppContainer(AppStack);
 
 export type Routes = MainRoutes | AuthRoutes;

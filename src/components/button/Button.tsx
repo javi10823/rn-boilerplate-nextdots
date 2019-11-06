@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { ButtonTouchable, Title } from './styles';
+import { ButtonTouchable, ButtonTouchableStyle, Title, getSizeStyle } from './styles';
+import AnimatedSqueeze from '../AnimatedSqueeze';
 
 export type Type = 'primary' | 'secondary';
-
 export type Size = 'small' | 'medium' | 'big' | 'auto';
 
 interface ButtonProps {
@@ -15,9 +15,14 @@ interface ButtonProps {
 }
 
 const Button = ({ text, onPress, type, size, disabled }: ButtonProps) => (
-  <ButtonTouchable type={type} onPress={onPress} disabled={disabled} size={size}>
+  <AnimatedSqueeze 
+    disabled={disabled}
+    onPress={onPress} 
+    touchableStyle={ButtonTouchableStyle({ disabled, type })}
+    viewStyle={getSizeStyle(size)}
+  >
     <Title type={type}>{text}</Title>
-  </ButtonTouchable>
+  </AnimatedSqueeze>
 );
 
 Button.defaultProps = {
