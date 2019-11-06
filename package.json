@@ -6,7 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "ts": "tsc --watch --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@apollo/react-hoc": "^3.1.2",

@@ -1,4 +1,4 @@
-import { FormState, FormStateTyped } from 'redux-form';
+import { FormState } from 'redux-form';
 
 export const required = (value: string) => (!value ? 'Required field.' : undefined);
 
@@ -14,8 +14,4 @@ export const validateEmail = (value: string) => {
     return emailRegex.test(value) ? null : 'Invalid email address.';
   }
   return null;
-};
-
-export const mapFormToProps = <V>(form: FormState) => {
-  return form as FormStateTyped<V>;
 };

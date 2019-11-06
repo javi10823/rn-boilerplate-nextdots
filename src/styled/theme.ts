@@ -19,6 +19,7 @@ const color = {
   black: 'black',
   lightBlue: '#2196F3',
   lightBlueDisabled: '#bfdce3',
+  nextDotsPurple: '#401bc4',
 };
 
 export const theme = {

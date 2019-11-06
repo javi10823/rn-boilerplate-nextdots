@@ -47,14 +47,17 @@ class SignInScreen extends React.Component<Props, State> {
   };
 
   onLogInPressed = async () => {
-    const { loginForm, logIn } = this.props;
+    const {
+      logIn,
+      loginForm: { values },
+    } = this.props;
     this.setState({ loading: true, error: false });
-    await logIn();
-
-    this.setState({ loading: false });
-    const { username } = loginForm.values;
-    Alert.alert('Welcome ' + username + '!');
-    goToPage('Home');
+    if (values) {
+      await logIn();
+      this.setState({ loading: false });
+      Alert.alert('Welcome ' + values.username + '!');
+      goToPage('Home');
+    }
   };
 
   validateFields = () => {
@@ -105,8 +108,7 @@ const VALIDATION_SCHEMA = yup.object().shape({
 
 function mapStateToProps(store: Store) {
   return {
-    loginForm: Form.mapFormToProps<Values>(store.form.login),
-    initialValues: { username: VALID_USERNAME, password: VALID_PASSWORD },
+    loginForm: store.form.login,
   };
 }
 
@@ -121,6 +123,7 @@ export default connect(
   reduxForm<Values, ConnectProps>({
     form: 'login',
     destroyOnUnmount: true,
+    initialValues: { username: VALID_USERNAME, password: VALID_PASSWORD },
     asyncValidate: Form.validator(VALIDATION_SCHEMA),
   })(SignInScreen),
 );
