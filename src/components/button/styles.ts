@@ -1,7 +1,7 @@
 import { TextProps, TouchableOpacityProps } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { Type, Size } from './Button';
-import { rs } from '../../styled';
+import { rs, theme } from '../../styled';
 
 type TitleProps = {
   type: Type;
@@ -15,28 +15,28 @@ type ButtonTouchableProps = {
 
 const getTypeStyle = (type: Type, disabled: boolean) =>
   ({
-    primary: css`
-      background-color: ${p => (disabled ? p.theme.color.inactive : p.theme.color.lightBlue)};
-    `,
-    secondary: css`
-      background-color: transparent;
-    `,
+    primary: {
+      backgroundColor: disabled ? theme.color.inactive : theme.color.nextDotsPurple,
+    },
+    secondary: {
+      backgroundColor: 'transparent',
+    },
   }[type]);
 
-const getSizeStyle = (size: Size) =>
+export const getSizeStyle = (size: Size) =>
   ({
-    small: css`
-      min-width: 35%;
-    `,
-    medium: css`
-      min-width: 60%;
-    `,
-    big: css`
-      min-width: 85%;
-    `,
-    auto: css`
+    small: {
+      minWidth: '35%',
+    },
+    medium: {
+      minWidth: '60%',
+    },
+    big: {
+      minWidth: '85%',
+    },
+    auto: {
       /* fits to text width */
-    `,
+    },
   }[size]);
 
 function getTextStyle(type: Type) {
@@ -50,12 +50,19 @@ function getTextStyle(type: Type) {
   }[type];
 }
 
+export const ButtonTouchableStyle = ({ disabled, type }) => ({
+  borderRadius: rs(10),
+  height: rs(55),
+  justifyContent: 'center',
+  padding: rs(5),
+  ...getTypeStyle(type, disabled),
+});
+
 export const ButtonTouchable = styled.TouchableOpacity<ButtonTouchableProps>`
   justify-content: center;
   padding: ${rs(5)}px;
   border-radius: ${rs(10)}px;
   height: ${rs(55)}px;
-
   ${p => getTypeStyle(p.type, p.disabled)};
   ${p => getSizeStyle(p.size)};
 `;
@@ -63,6 +70,5 @@ export const ButtonTouchable = styled.TouchableOpacity<ButtonTouchableProps>`
 export const Title = styled.Text<TitleProps>`
   text-align: center;
   font-size: 16px;
-
   ${p => getTextStyle(p.type)}
 `;

@@ -1,4 +1,3 @@
-import { FormState, FormStateTyped } from 'redux-form';
 import { Schema } from 'yup';
 
 export const validator = (schema: Schema<any>) => async (formValues: any) => {
@@ -15,8 +14,4 @@ export const validator = (schema: Schema<any>) => async (formValues: any) => {
       {},
     );
   }
-};
-
-export const mapFormToProps = <V>(form: FormState) => {
-  return form as FormStateTyped<V>;
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Typography } from '..';
-import { TypographyProps } from '../typography';
+import Typography, { TypographyProps } from '../typography';
 
 type Props = {
   containerStyle?: object;
