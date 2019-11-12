@@ -6,7 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "ts": "tsc --watch --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.2",
@@ -20,6 +21,7 @@
     "react-native-screens": "^1.0.0-alpha.23",
     "react-native-splash-screen": "^3.2.0",
     "react-native-vector-icons": "^6.6.0",
+    "react-native-version-number": "^0.3.6",
     "react-navigation": "^4.0.10",
     "react-navigation-animated-switch": "^0.3.2",
     "react-navigation-stack": "^1.9.3",
