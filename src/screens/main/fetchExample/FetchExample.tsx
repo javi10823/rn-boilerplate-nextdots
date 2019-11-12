@@ -24,6 +24,7 @@ class FetchExample extends React.Component<Props, State> {
   render() {
     const { exampleData, fetchExampleError, fetchExampleIsLoading } = this.props;
 
+    console.log('props', this.props);
     return (
       <Container>
         <BackButton onPress={() => goBack()} text="FetchExample" />

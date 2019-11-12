@@ -11,6 +11,7 @@ export default class ExampleService {
           resolve(response);
         } else reject();
       } catch (error) {
+        console.log('error', error);
         reject(error);
       }
     });

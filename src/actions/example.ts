@@ -18,6 +18,7 @@ export function fetchExample() {
         dispatch(fetchExampleSuccess(response));
       }
     } catch (err) {
+      console.log('err', err);
       dispatch(fetchExampleError(err));
     }
   };

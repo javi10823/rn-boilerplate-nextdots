@@ -1,5 +1,6 @@
 // LOGOS
-export { default as NDLogo } from './logo.png';
+// @ts-ignore
+export { default as NDLogo } from './logos/NDNewLogo.jpg';
 // ICONS
 // IMAGES
 // TESTIMAGES
