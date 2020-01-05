@@ -9,6 +9,23 @@
     "test": "jest",
     "ts": "tsc --watch --noEmit --skipLibCheck"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit --skipLibCheck && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "yarn run prettier-format",
+      "yarn run lint",
+      "prettier src --write",
+      "git add"
+    ],
+    "*.{json}": [
+      "prettier src --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@apollo/react-hoc": "^3.1.2",
     "@react-native-community/async-storage": "^1.6.2",
