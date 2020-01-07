@@ -9,6 +9,23 @@
     "test": "jest",
     "ts": "tsc --watch --noEmit --skipLibCheck"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit --skipLibCheck && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "yarn run prettier-format",
+      "yarn run lint",
+      "prettier src --write",
+      "git add"
+    ],
+    "*.{json}": [
+      "prettier src --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@apollo/react-hoc": "^3.1.2",
     "@react-native-community/async-storage": "^1.6.2",
@@ -18,7 +35,7 @@
     "apollo-link": "^1.2.13",
     "apollo-link-context": "^1.0.19",
     "apollo-link-error": "^1.1.12",
-    "apollo-link-http": "^1.5.16",
+    "apollo-upload-client": "^12.1.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "react": "16.9.0",
