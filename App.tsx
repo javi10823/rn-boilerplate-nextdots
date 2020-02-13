@@ -34,6 +34,7 @@ import config, { isProduction } from './config';
 class App extends PureComponent {
   componentDidMount() {
     this.initSentry();
+    SplashScreen.hide();
   }
 
   initSentry = () => {
@@ -59,9 +60,6 @@ class App extends PureComponent {
   };
 
   render() {
-    useEffect(() => {
-      SplashScreen.hide();
-    }, []);
     const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
     return (
       <>
