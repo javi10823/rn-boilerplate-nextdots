@@ -47,7 +47,10 @@ class SignInScreen extends React.Component<Props, State> {
   };
 
   onLogInPressed = async () => {
-    const { loginForm: { values }, logIn } = this.props;
+    const {
+      loginForm: { values },
+      logIn,
+    } = this.props;
     this.setState({ loading: true, error: false });
     await logIn();
     this.setState({ loading: false });
