@@ -9,7 +9,7 @@ import { Container, JSONContainer } from './styles';
 import { goBack } from '../../../navigation';
 
 interface Props {
-  fetchExample: Function;
+  fetchExample: () => void;
   exampleData: any;
   fetchExampleError: string;
   fetchExampleIsLoading: boolean;
@@ -23,6 +23,10 @@ class FetchExample extends React.Component<Props, State> {
 
   render() {
     const { exampleData, fetchExampleError, fetchExampleIsLoading } = this.props;
+    let exampleDrink = {};
+    if (exampleData) {
+      exampleDrink = exampleData.drinks[1];
+    }
 
     return (
       <Container>
@@ -32,7 +36,7 @@ class FetchExample extends React.Component<Props, State> {
         ) : (
           <JSONContainer>
             <ScrollView>
-              <Typography>{JSON.stringify(exampleData, null, 2)}</Typography>
+              <Typography>{JSON.stringify(exampleDrink, null, 2)}</Typography>
             </ScrollView>
           </JSONContainer>
         )}

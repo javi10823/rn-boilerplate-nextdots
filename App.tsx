@@ -1,7 +1,7 @@
-
 import React, { PureComponent } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from '@sentry/react-native';
 import VersionNumber from 'react-native-version-number';
 
@@ -14,6 +14,7 @@ import config, { isProduction } from './src/config';
 export default class App extends PureComponent {
   componentDidMount() {
     this.initSentry();
+    SplashScreen.hide();
   }
 
   initSentry = () => {

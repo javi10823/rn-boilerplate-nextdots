@@ -9,7 +9,7 @@ export default class ExampleConfig {
   }
 
   static get endpointExample(): string {
-    return `${ExampleConfig.endpoint}/lookup.php?i=11007`;
+    return `${ExampleConfig.endpoint}/search.php?s=mar`;
   }
 
   static get APIConnector(): APIConnector {

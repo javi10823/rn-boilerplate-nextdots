@@ -7,10 +7,10 @@ export default class ExampleService {
         const endpoint = ExampleConfig.endpointExample;
         const response: any = await ExampleConfig.APIConnector.get(endpoint);
         if (response.__ok) {
-          delete response.__ok;
           resolve(response);
         } else reject();
       } catch (error) {
+        console.log('error', error);
         reject(error);
       }
     });
