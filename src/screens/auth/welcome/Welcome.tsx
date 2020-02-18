@@ -10,7 +10,7 @@ const Welcome = () => {
     <Container>
       <WelcomeImage source={NDLogo} />
       <Title color="primary" variant="bold" size={14}>
-        {`REACT NATIVE TYPESCRIPT\nNEXTDOTS v0.61.1 NOVEMBER 2019`}
+        {`REACT NATIVE TYPESCRIPT\nNEXTDOTS v0.61.5 FEBRUARY 2020`}
       </Title>
       <Button size="big" text="SignIn" onPress={() => goToPage('SignIn')} />
     </Container>
