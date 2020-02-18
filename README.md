@@ -1,12 +1,20 @@
-# NextDots core mobile React Native Typescript RN 0.61.1
+# NextDots core mobile React Native Typescript RN 0.61.5
 
-NextDots core mobile React Native with Typescript template React Native 0.61.1
+NextDots core mobile React Native with Typescript template React Native 0.61.5
 
 ## Create a new project from the core app
 
-This is a core app for new project, so the first step is `renaming` the project.
+### Fetch Apollo or Redux branch
 
-### Renaming project: Install React Native Rename Globaly
+For Apollo / GraphQL branch: 
+`$ git fetch origin 0.60.4-apollo && git checkout 0.60.4-apollo`
+
+For Redux branch: 
+`$ git fetch origin 0.60.4-redux && git checkout 0.60.4-redux`
+
+This is a core app for new project, so the second step is `renaming` the project.
+
+### Renaming project: Install React Native Rename Globally
 
 ```
 $ yarn global add react-native-rename
@@ -30,10 +38,11 @@ $ cd ios && pod install
 
 - Prettier
 - TSLint
+- Editorconfig
 
 ## Create the .env file
 
-The content of each key was added in 1Passord for security purposes
+The content of each key was added in 1Password for security purposes.
 
 There is a `.env.example` file in the root of the project, you have to rename to `.env` and add the proper values for each key.
 
@@ -43,16 +52,16 @@ There is a `.env.example` file in the root of the project, you have to rename to
 
 ## launch Android
 
-`$ react-native run-android` or from Ansdroid Studio
+`$ react-native run-android` or from Android Studio
 
 ## Utils
 
 - Execute `yarn run ts` for typescript live reload check (Compile ts project)
 - Use [react-native-elements](https://react-native-training.github.io/react-native-elements/docs/overview.html)
 
-## Libreries used
+## Libraries used
 
-- React Native version: 0.60.4.
+- React Native version: 0.61.5.
 - TypeScript
 - Redux / Redux forms with Yup
 - Apollo for GraphQL
