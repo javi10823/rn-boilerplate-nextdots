@@ -15,9 +15,9 @@ interface ButtonProps {
 }
 
 const Button = ({ text, onPress, type, size, disabled }: ButtonProps) => (
-  <AnimatedSqueeze 
+  <AnimatedSqueeze
     disabled={disabled}
-    onPress={onPress} 
+    onPress={onPress}
     touchableStyle={ButtonTouchableStyle({ disabled, type })}
     viewStyle={getSizeStyle(size)}
   >
