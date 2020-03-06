@@ -9,14 +9,7 @@
  */
 
 import React, { useEffect, PureComponent } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from '@sentry/react-native';
 import VersionNumber from 'react-native-version-number';
@@ -65,9 +58,7 @@ class App extends PureComponent {
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
+          <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
             <Header />
             {!usingHermes ? null : (
               <View style={styles.engine}>
@@ -78,8 +69,8 @@ class App extends PureComponent {
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Step One</Text>
                 <Text style={styles.sectionDescription}>
-                  Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                  screen and then come back to see your edits.
+                  Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then
+                  come back to see your edits.
                 </Text>
               </View>
               <View style={styles.sectionContainer}>

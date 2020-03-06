@@ -52,6 +52,7 @@
     "@types/yup": "^0.26.22",
     "babel-jest": "^24.9.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "detox": "^15.4.2",
     "dtslint": "^0.8.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
@@ -79,5 +80,40 @@
       "json",
       "node"
     ]
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/CoreMobile.app",
+        "build": "xcodebuild -workspace ios/CoreMobile.xcworkspace -scheme CoreMobile -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "device": {
+          "type": "iPhone 11"
+        }
+      },
+      "ios.sim.release": {
+        "binaryPath": "./ios/build/Build/Products/Release-iphonesimulator/testReactNativeDetox.app",
+        "build": "xcodebuild -workspace ios/CoreMobile.xcworkspace -scheme CoreMobile -configuration release -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 11"
+      },
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+        "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
+        "type": "android.emulator",
+        "device": {
+          "avdName": "Pixel_API_28"
+        }
+      },
+      "android.emu.release": {
+        "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+        "build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
+        "type": "android.emulator",
+        "device": {
+          "avdName": "Pixel_API_28"
+        }
+      }
+    },
+    "test-runner": "jest"
   }
 }
