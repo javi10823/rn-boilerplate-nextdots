@@ -134,6 +134,9 @@ Example -> `$ yarn e2e:build:ios:debug`
 
 Example -> `$ yarn e2e:test:ios:debug`
 
+NOTE: The default configuration for this project runs the tests on `iPhone 11` simulator for iOS and an AVD with name `Pixel_API_28` for Android.
+If you need or want to run the tests on a different simulator for iOS or AVD for Android, go to the `package.json` and change it under -> `detox.configurations.<configuration>.device`.
+
 ### Troubleshoothing
 
 #### `$ANDROID_SDK_ROOT` is not defined
