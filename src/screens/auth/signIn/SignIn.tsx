@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { reduxForm, InjectedFormProps } from 'redux-form';
 import { Alert } from 'react-native';
 import * as yup from 'yup';
@@ -70,14 +71,25 @@ class SignInScreen extends React.Component<Props, State> {
     const { error, loading } = this.state;
 
     return (
-      <Container>
-        <BackButton onPress={() => goBack()} text="SignIn" />
+      <Container testID="signin_screen">
+        <BackButton onPress={() => goBack()} />
         <Content>
           <Typography color="black" size={18}>
             Enter your account data
           </Typography>
-          <Form.TextField name="username" label="Email" keyboardType="email-address" />
-          <Form.TextField name="password" label="Password" secureTextEntry keyboardType="default" />
+          <Form.TextField
+            testID="email_field"
+            name="username"
+            label="Email"
+            keyboardType="email-address"
+          />
+          <Form.TextField
+            testID="password_field"
+            name="password"
+            label="Password"
+            secureTextEntry
+            keyboardType="default"
+          />
           {error && (
             <Typography color="black" size={12} textAlign="center">
               Something went wrong. Please try again later
@@ -114,14 +126,12 @@ const mapDispatchToProps = (dispatch: Function) => ({
   logIn: () => dispatch(logIn()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
   reduxForm<Values, ConnectProps>({
     form: 'login',
     destroyOnUnmount: true,
     asyncValidate: Form.validator(VALIDATION_SCHEMA),
     initialValues: { username: VALID_USERNAME, password: VALID_PASSWORD },
-  })(SignInScreen),
-);
+  }),
+)(SignInScreen);

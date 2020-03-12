@@ -13,6 +13,7 @@ interface Props {
   iconColor: keyof typeof theme.text | keyof typeof theme.color | keyof typeof theme.ui;
   onPress: () => void;
   textColor: keyof typeof theme.text;
+  testID?: string;
 }
 
 const BackButton = ({
@@ -24,9 +25,10 @@ const BackButton = ({
   iconColor,
   onPress,
   textColor,
+  testID,
 }: Props) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity testID={testID} onPress={onPress}>
       <Container style={style}>
         <IconContainer>
           <Icon name="arrow-back" size={nlz(size)} color={iconColor} style={iconStyle} />
@@ -52,6 +54,7 @@ BackButton.defaultProps = {
   iconColor: theme.text.primary,
   textColor: 'primary',
   onPress: () => {},
+  testID: null,
 };
 
 export default BackButton;

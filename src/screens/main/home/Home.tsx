@@ -17,13 +17,13 @@ const Home = ({ logOut }: Props) => {
   };
 
   return (
-    <Container>
+    <Container testID="home_screen">
       <Title color="primary" variant="bold" size={14}>
         {`HOME`}
       </Title>
-      <Button size="big" text="Go to FetchExample" onPress={() => goToPage('FetchExample')} />
+      <Button size="big" text="Go To FetchExample" onPress={() => goToPage('FetchExample')} />
       <Spacing />
-      <Button size="big" text="LogOut" onPress={onPressLogOut} />
+      <Button size="big" text="Log Out" onPress={onPressLogOut} />
     </Container>
   );
 };
@@ -33,7 +33,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
   logOut: () => dispatch(logOut()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

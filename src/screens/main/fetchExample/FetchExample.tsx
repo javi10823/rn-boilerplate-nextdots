@@ -29,12 +29,18 @@ class FetchExample extends React.Component<Props, State> {
     }
 
     return (
-      <Container>
-        <BackButton onPress={() => goBack()} text="FetchExample" />
-        {fetchExampleIsLoading || fetchExampleError ? (
-          <EmptyContent text={fetchExampleError} />
+      <Container testID="fetch_example_screen">
+        <BackButton
+          testID="back_button_on_fetch_screen"
+          onPress={() => goBack()}
+          text="FetchExample"
+        />
+        {fetchExampleIsLoading ? (
+          <EmptyContent testID="loading_on_fetch_example" text="Loading..." />
+        ) : fetchExampleError ? (
+          <EmptyContent testID="error_on_fetch_example" text={fetchExampleError} />
         ) : (
-          <JSONContainer>
+          <JSONContainer testID="data_on_fetch_example">
             <ScrollView>
               <Typography>{JSON.stringify(exampleDrink, null, 2)}</Typography>
             </ScrollView>
@@ -55,7 +61,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
   fetchExample: () => dispatch(fetchExample()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(FetchExample);
+export default connect(mapStateToProps, mapDispatchToProps)(FetchExample);
