@@ -5,6 +5,7 @@ export default class ExampleService {
     return new Promise(async (resolve, reject) => {
       try {
         const endpoint = ExampleConfig.endpointExample;
+        console.log(endpoint);
         const response: any = await ExampleConfig.APIConnector.get(endpoint);
         if (response.__ok) {
           resolve(response);

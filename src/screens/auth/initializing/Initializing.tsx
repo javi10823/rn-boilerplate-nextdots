@@ -4,7 +4,7 @@ import SplashScreen from 'react-native-splash-screen';
 import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 
-import { initApp, goToPage, resetStack } from '../../../navigation';
+import { initApp, resetStack } from '../../../navigation';
 import { Container as _Container } from '../../../components';
 import { waitOneSecond } from '../../../utils/time';
 import { USER_TOKEN } from '../../../utils/constant';

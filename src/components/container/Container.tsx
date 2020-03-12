@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ViewStyle } from 'react-native';
 import { _Container } from './styles';
+import { SafeAreaViewProps } from 'react-navigation';
 
-interface Props {
+interface Props extends SafeAreaViewProps {
   children: React.ReactNode | React.ReactNodeArray;
   style: ViewStyle;
 }

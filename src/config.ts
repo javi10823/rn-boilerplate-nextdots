@@ -38,6 +38,7 @@ interface Config {
   API_URL: string;
   SENTRY_DSN: string;
   REDUX_LOGGER_ACTIVATED: boolean;
+  API_CONNECTOR_LOGS_ACTIVATED: boolean;
 }
 
 const Config = {

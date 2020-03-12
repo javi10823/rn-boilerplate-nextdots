@@ -7,6 +7,7 @@ interface Props {
   onPress: () => void;
   touchableStyle: object;
   viewStyle: object;
+  testID?: string;
 }
 
 class AnimatedSqueeze extends Component<Props> {
@@ -15,6 +16,7 @@ class AnimatedSqueeze extends Component<Props> {
     onPress: () => {},
     touchableStyle: {},
     viewStyle: {},
+    testID: null,
   };
 
   SqueezeValue = new Animated.Value(0);
@@ -46,7 +48,7 @@ class AnimatedSqueeze extends Component<Props> {
   };
 
   render() {
-    const { children, disabled, touchableStyle, viewStyle } = this.props;
+    const { children, disabled, touchableStyle, viewStyle, testID } = this.props;
     const squeezee = this.SqueezeValue.interpolate({
       inputRange: [0, 0.3, 0.6, 1],
       outputRange: [1, 0.99, 0.98, 0.96],
@@ -55,6 +57,7 @@ class AnimatedSqueeze extends Component<Props> {
     return (
       <Animated.View style={[{ transform: [{ scale: squeezee }] }, viewStyle]}>
         <TouchableOpacity
+          testID={testID}
           activeOpacity={1}
           disabled={disabled}
           onPress={this.scaleAndGoTo}

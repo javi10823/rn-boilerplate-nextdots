@@ -17,6 +17,6 @@ const stack = {
     navigationOptions: noHeader,
   },
 };
-
+// @ts-ignore
 export const AuthStack = createStackNavigator(stack);
 export type AuthRoutes = keyof typeof stack;
