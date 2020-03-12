@@ -50,7 +50,8 @@ type ReactNativeTextInputPropsToPick =
   | 'keyboardType'
   | 'secureTextEntry'
   | 'autoCapitalize'
-  | 'maxLength';
+  | 'maxLength'
+  | 'testID';
 
 type PickedReactNativeTextInputProps = Pick<TextInputProps, ReactNativeTextInputPropsToPick>;
 

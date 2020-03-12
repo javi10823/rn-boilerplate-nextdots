@@ -7,11 +7,12 @@ import Typography from '../typography';
 interface Props {
   text: string;
   spinnerColor: string;
+  testID?: string;
 }
 
-const BackButton = ({ text, spinnerColor }: Props) => {
+const BackButton = ({ text, spinnerColor, testID }: Props) => {
   return (
-    <Container>
+    <Container testID={testID}>
       {text ? <Typography>{text}</Typography> : <ActivityIndicator color={spinnerColor} />}
     </Container>
   );

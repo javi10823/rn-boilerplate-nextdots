@@ -19,12 +19,18 @@ class FetchExample extends React.Component<ChildProps> {
     const { loading, artworks, error } = data;
 
     return (
-      <Container>
-        <BackButton onPress={() => goBack()} text="FetchExample" />
-        {loading || error ? (
-          <EmptyContent text={JSON.stringify(error)} />
+      <Container testID="fetch_example_screen">
+        <BackButton
+          testID="back_button_on_fetch_screen"
+          onPress={() => goBack()}
+          text="FetchExample"
+        />
+        {loading ? (
+          <EmptyContent testID="loading_on_fetch_example" text="Loading..." />
+        ) : error ? (
+          <EmptyContent testID="error_on_fetch_example" text={JSON.stringify(error)} />
         ) : (
-          <JSONContainer>
+          <JSONContainer testID="data_on_fetch_example">
             <ScrollView>
               <Typography>{JSON.stringify(artworks, null, 2)}</Typography>
             </ScrollView>

@@ -12,10 +12,12 @@ interface ButtonProps {
   size: Size;
   onPress: () => void;
   disabled: boolean;
+  testID?: string;
 }
 
-const Button = ({ text, onPress, type, size, disabled }: ButtonProps) => (
+const Button = ({ text, onPress, type, size, disabled, testID }: ButtonProps) => (
   <AnimatedSqueeze
+    testID={testID}
     disabled={disabled}
     onPress={onPress}
     touchableStyle={ButtonTouchableStyle({ disabled, type })}
@@ -30,6 +32,7 @@ Button.defaultProps = {
   disabled: false,
   size: 'medium',
   onPress: () => {},
+  testID: null,
 };
 
 export default Button;
